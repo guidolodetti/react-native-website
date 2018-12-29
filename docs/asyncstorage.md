@@ -68,7 +68,7 @@ _retrieveData = async () => {
 ### `getItem()`
 
 ```javascript
-static getItem(key: string, [callback]: ?(error: ?Error, result: ?string) => void)
+static getItem(key: string, [callback]: ?(result: ?string, error: ?Error) => void)
 ```
 
 Fetches an item for a `key` and invokes a callback upon completion. Returns a `Promise` object.
@@ -78,7 +78,7 @@ Fetches an item for a `key` and invokes a callback upon completion. Returns a `P
 | Name     | Type                                      | Required | Description                                                       |
 | -------- | ----------------------------------------- | -------- | ----------------------------------------------------------------- |
 | key      | string                                    | Yes      | Key of the item to fetch.                                         |
-| callback | ?(error: ?Error, result: ?string) => void | No       | Function that will be called with a result if found or any error. |
+| callback | ?(result: ?string, error: ?Error) => void | No       | Function that will be called with a result if found or any error. |
 
 ---
 
@@ -151,7 +151,7 @@ let UID123_delta = {
 
 AsyncStorage.setItem('UID123', JSON.stringify(UID123_object), () => {
   AsyncStorage.mergeItem('UID123', JSON.stringify(UID123_delta), () => {
-    AsyncStorage.getItem('UID123', (err, result) => {
+    AsyncStorage.getItem('UID123', (result, err) => {
       console.log(result);
     });
   });
